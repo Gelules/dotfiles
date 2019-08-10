@@ -15,6 +15,7 @@ then
   gdb
   gimp
   git
+  imagemagick
   kile
   libreoffice-fresh
   lightdm
@@ -25,7 +26,8 @@ then
   nmap
   pandoc
   openssh
-  python3
+  python
+  python-pip
   rxvt-unicode
   stow
   strace
