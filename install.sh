@@ -49,7 +49,7 @@ then
   # DEBUG
   exit
   
-  # Installation de yaourt
+  # yaourt installation
   cd /tmp/
   git clone https://aur.archlinux.org/package-query.git
   cd package-query
