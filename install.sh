@@ -67,6 +67,7 @@ fi
 # Simlinks to home via stow
 stow git
 stow slrn
+stow utils
 stow vim
 stow zsh
 stow X
