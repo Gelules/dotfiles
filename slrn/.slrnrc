@@ -1,0 +1,5 @@
+set username "aubert_o"
+set hostname "epita.fr"
+set realname "Jules Aubert"
+visible_headers "From:,Newsgroups:,FollowUp-To:,Date:,Subject:"
+set sorting_method 9

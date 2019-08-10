@@ -1,0 +1,12 @@
+[user]
+  name = Jules Aubert
+  email = aubertjules@gmail.com
+
+[color]
+  ui = true
+
+[alias]
+  st = status
+
+[push]
+  default = simple

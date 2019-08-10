@@ -1,0 +1,9 @@
+URxvt*font: xft:DejaVu Sans Mono:size=10
+URxvt*scrollBar: false
+*background: Black
+*foreground: White
+URxvt*transparent: true
+URxvt*shading: 20
+URxvt*urgentOnBell: true
+URxvt*color12: #87afdf
+URxvt*color4: #87afdf
