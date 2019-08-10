@@ -1,0 +1,14 @@
+Packages:
+  Continue to update the list of packages I need each time I remember / find one usefull.
+
+Installation:
+  Stow the dotfiles.
+  Put a wallpaper nice :)
+  Add valgrind-color.sh
+
+Improvement:
+  Add genericity depending of the system (Debian-like, Fedora-like, ...).
+  This script uses ArchLinux package manager.
+
+Stuff:
+  Add the 'flip the table' to the fuck function in .zshrc file.

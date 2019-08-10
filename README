@@ -1,0 +1,15 @@
+I got, a lot of, inspiration from Kevin Sztern's dotfiles repository:
+  * https://github.com/Chewie/dotfiles
+
+A simple repository with my dotfiles to install my configuration from a new system.
+
+The script uses stow to make symlinks from the repository to your home, the purpose being to ease updating the
+confifuration files. That means you *must not* remove the repository, or you will have to deal with dangling symlinks.
+
+Usage:
+ To launch the full installation, run `./install.sh packages` *from* the root directory. You need stow to be installed
+ to do so.
+ To only link the configuration files, simply run `./install.sh`.
+
+I advise you to make the repository itself a dotfile from your own home.
+Be aware that my logins are hard written in some files as the .zshrc and the .slrnrc!
