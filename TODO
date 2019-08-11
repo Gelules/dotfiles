@@ -3,7 +3,6 @@ Packages:
 
 Installation:
   Put a nice wallpaper :)
-  Add valgrind-color.sh
 
 Improvement:
   Add genericity depending of the system (Debian-like, Fedora-like, ...).
