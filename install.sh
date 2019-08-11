@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # The packages I like to use
 if [ "$1" = "packages" ]
@@ -32,6 +32,7 @@ then
   stow
   strace
   texlive-most
+  tree
   valgrind
   unzip
   vim
