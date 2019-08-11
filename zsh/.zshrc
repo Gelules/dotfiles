@@ -51,7 +51,7 @@ zstyle ':vcs_info:*' actionformats \
     '%F{14}[%F{11}%b%F{11}|%F{9}%a%F{11}]%f'
 zstyle ':vcs_info:*' formats \
     '%F{14}[%F{11}%b%F{14}]%f'
-zstyle ':vcs_info:*' enable git hg
+zstyle ':vcs_info:*' enable git
 
 precmd ()
 {
