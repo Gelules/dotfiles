@@ -53,6 +53,11 @@ zstyle ':vcs_info:*' formats \
     '%F{14}[%F{11}%b%F{14}]%f'
 zstyle ':vcs_info:*' enable git hg
 
+precmd ()
+{
+  vcs_info
+}
+
 # Aliases
 alias ls='ls --color=auto'
 alias se='sudoedit'
@@ -60,7 +65,7 @@ alias epinews='slrn -f ~/.jnewsrc-epita'
 alias valgrindcolor='~/.scripts/valgrind-color.sh'
 
 # Functions
-mkcd()
+mkcd ()
 {
     if [ ! -d "$1" ]
     then
@@ -69,13 +74,13 @@ mkcd()
     cd $1
 }
 
-up()
+up ()
 {
   sudo pacman -Syyu $1
   sudo pacmann -Scc $1
 }
 
-fuck()
+fuck ()
 {
     if [ -n "$2" ]
     then
