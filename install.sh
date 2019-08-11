@@ -47,9 +47,6 @@ then
 
   sudo pacman -Syyu
   sudo pacman -S -y $pacman_packages
-
-  # DEBUG
-  exit
   
   # yaourt installation
   cd /tmp/
