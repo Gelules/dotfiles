@@ -8,6 +8,7 @@ then
   awesome
   curl
   doxygen
+  fakeroot
   feh
   filezilla
   firefox
@@ -16,6 +17,7 @@ then
   gimp
   git
   imagemagick
+  inkscape
   kile
   libreoffice-fresh
   lightdm
@@ -25,6 +27,7 @@ then
   most
   nmap
   pandoc
+  pkg-config
   openssh
   python
   python-pip
