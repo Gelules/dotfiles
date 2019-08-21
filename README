@@ -14,4 +14,4 @@ Usage:
  To only link the configuration files, simply run `./install.sh`.
 
 I advise you to make the repository itself a dotfile from your own home.
-Be aware that my logins are hard written in some files as the .zshrc and the .slrnrc!
+Be aware that my logins are hard written in some files!
