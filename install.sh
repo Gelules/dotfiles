@@ -3,7 +3,8 @@
 # The packages I like to use
 if [ "$1" = "packages" ]
 then
-  pacman_packages="arduino
+  pacman_packages="
+  arduino
   audacity
   awesome
   ctags
@@ -54,7 +55,7 @@ then
 
   sudo pacman -Syyu
   sudo pacman -S -y $pacman_packages
-  
+
   # yaourt installation
   cd /tmp/
   git clone https://aur.archlinux.org/package-query.git
@@ -83,4 +84,5 @@ stow X
 mkdir -p ~/.config/awesome
 stow -t  ~/.config/awesome awesome
 
-echo "sh can't source ~/.zshrc so don't forget to do it!"
+# Set the shell to zsh
+chsh -s $(which zsh)
