@@ -49,6 +49,7 @@ Plug 'tpope/vim-repeat'
 Plug 'nanotech/jellybeans.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'luochen1990/rainbow'
 
 " Filetype specific plugins
 Plug 'pearofducks/ansible-vim'
@@ -268,6 +269,9 @@ let g:jellybeans_background_color_256='232'
 
 " Feel free to switch to another colorscheme
 colorscheme jellybeans
+
+" Rainbow parentheses
+let g:rainbow_active = 1
 
 " Override unimpaired quickfix and loc-list mappings to use vim-qf wrapparound
 let g:nremap = {"[q": "", "]q": "", "[l": "", "]l": ""}
