@@ -76,8 +76,8 @@ mkcd ()
 
 up ()
 {
-  sudo pacman -Syyu $1
-  sudo pacman -Scu $1
+  sudo pacman -Syyu 
+  sudo pacman -Scc 
 }
 
 fuck ()
