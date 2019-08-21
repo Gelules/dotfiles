@@ -50,7 +50,8 @@ then
   zip
   zsh"
 
-  yaourt_packages="slrn
+  yaourt_packages="
+  slrn
   uctags-git"
 
   sudo pacman -Syyu
