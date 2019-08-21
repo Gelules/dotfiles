@@ -6,6 +6,8 @@ A simple repository with my dotfiles to install my configuration from a new syst
 The script uses stow to make symlinks from the repository to your home, the purpose being to ease updating the
 confifuration files. That means you *must not* remove the repository, or you will have to deal with dangling symlinks.
 
+In case of a very fresh install, you should download the 'install.sh' file, execute it and then clone this repo.
+
 Usage:
  To launch the full installation, run `./install.sh packages` *from* the root directory. You need stow to be installed
  to do so.
