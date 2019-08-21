@@ -26,6 +26,7 @@ then
   ltrace
   make
   most
+  namcap
   nmap
   pandoc
   pkg-config
