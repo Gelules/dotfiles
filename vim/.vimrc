@@ -53,6 +53,9 @@ Plug 'vim-airline/vim-airline-themes'
 " Filetype specific plugins
 Plug 'pearofducks/ansible-vim'
 
+" Tag management
+Plug 'ludovicchabant/vim-gutentags'
+
 " 'IDE' features
 Plug 'tpope/vim-fugitive'
 Plug 'janko/vim-test'
@@ -114,7 +117,8 @@ set laststatus=2
 
 " Format the status line
 " This status line comes from Pierre Bourdon's vimrc
-"set statusline=%f\ %l\|%c\ %m%=%p%%\ (%Y%R)
+" set statusline=%f\ %l\|%c\ %m%=%p%%\ (%Y%R)
+set statusline+=%{gutentags#statusline()}
 
 " Enhance command line completion
 set wildmenu
