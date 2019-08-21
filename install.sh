@@ -46,6 +46,7 @@ then
   weechat
   wget
   wireshark-qt
+  xtrlock
   zathura
   zip
   zsh"
