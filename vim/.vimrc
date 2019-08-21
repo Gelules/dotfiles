@@ -265,7 +265,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Use a slightly darker background color to differentiate with the status line
-let g:jellybeans_background_color_256='232'
+let g:jellybeans_background_color_256='NONE'
 
 " Feel free to switch to another colorscheme
 colorscheme jellybeans
