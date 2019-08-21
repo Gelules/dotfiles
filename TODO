@@ -8,7 +8,6 @@ Improvement:
   Add genericity depending of the system (Debian-like, Fedora-like, ...).
     This script uses ArchLinux package manager.
   Add code to zoom in and out on the terminal.
-  Add ctags.
 
 Stuff:
   Add the 'flip the table' to the fuck function in .zshrc file.

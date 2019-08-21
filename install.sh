@@ -6,6 +6,7 @@ then
   pacman_packages="arduino
   audacity
   awesome
+  ctags
   curl
   doxygen
   fakeroot
@@ -68,6 +69,7 @@ then
 fi
 
 # Simlinks to home via stow
+stow ctags
 stow git
 stow slrn
 stow utils
