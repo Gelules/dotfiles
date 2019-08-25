@@ -1,15 +1,41 @@
-# The following lines were added by compinstall
-
 autoload -U colors && colors
+
+## Options section
+# Auto correct mistakes
+setopt correct
+# Extended globbing. Allows using regular expressions with *
+setopt extendedglob
+# Case insensitive globbing
+setopt nocaseglob
+# Array expension with parameters
+setopt rcexpandparam
+# Warn about running processes when exiting
+setopt checkjobs
+# Sort filenames numerically when it makes sense
+setopt numericglobsort
+# No f*****g beep
+setopt nobeep
+# Immediately append history instead of overwriting
+setopt appendhistory
+# If a new command is a duplicate, remove the older one
+setopt histignorealldups
+# If only a directory path is entered, cd there
+setopt autocd
 
 setopt prompt_subst
 setopt glob_dots
 
+# Case insensitive tab completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' completer _expand _complete _ignored
-zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' rehash true
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache 
+
 zstyle :compinstall filename '/home/jules/.zshrc'
 
 autoload -Uz compinit
@@ -19,8 +45,6 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt extendedglob
-unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
@@ -29,20 +53,35 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
-# bindkeys 
-## del, home and end
+##  bindkeys 
+bindkey -e
+# del, home and end
 bindkey '\e[3~' delete-char
 bindkey '\e[H' beginning-of-line
 bindkey '\e[F' end-of-line
 
-
-## ctrl+left and ctrl+right
+# ctrl+left and ctrl+right
 bindkey '\e[1;5C' forward-word
 bindkey '\e[1;5D' backward-word
 
-## ctrl-bs and ctrl-del
+# ctrl-bs and ctrl-del
 bindkey '\e[3;5~' kill-word
 bindkey '\C-_' backward-kill-word
+
+# More control
+bindkey '[[7~' beggining-of-line                      # Home key
+bindkey '[[8~' end-of-line                            # End key
+bindkey '[[2~' overwrite-mode                         # Insert key
+bindkey '[[C'  forward-char                           # Right key
+bindkey '[[D'  backward-char                          # Left key
+bindkey '[[5~' history-beggining-search-backward      # Page up key
+bindkey '[[6~' history-beggining-search-forward       # Page down key
+
+# Navigate words with ctrl+arrow keys
+bindkey '^[0c' forward-word
+bindkey '^[0d' backward-word
+bindkey '^H' backward-kill-word                       # Delete previous word with ctrl+backspace
+bindkey '^Z' forward-word                             # Shift+tab undo last action
 
 # VCS Support
 autoload -Uz vcs_info
