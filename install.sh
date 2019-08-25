@@ -40,6 +40,7 @@ then
   stow
   strace
   texlive-most
+  thunar
   tree
   valgrind
   unzip
