@@ -23,6 +23,8 @@ then
   kile
   libreoffice-fresh
   lightdm
+  lightdm-gtk-greeter
+  lightdm-gtk-greeter-settings
   linux-headers
   ltrace
   make
