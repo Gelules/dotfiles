@@ -56,7 +56,8 @@ then
 
   yaourt_packages="
   slrn
-  uctags-git"
+  uctags-git
+  urxvt-font-size"
 
   sudo pacman -Syyu
   sudo pacman -S -y $pacman_packages
