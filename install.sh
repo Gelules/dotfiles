@@ -7,6 +7,7 @@ then
   arduino
   audacity
   awesome
+  conky
   ctags
   curl
   doxygen
@@ -46,9 +47,13 @@ then
   unzip
   vim
   vlc
+  volumeicon
   weechat
   wget
   wireshark-qt
+  xcompmgr
+  xfce4-power-manager
+  xfce4-settings
   xtrlock
   zathura
   zip
