@@ -18,6 +18,10 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+
+-- Vicious
+local vicious = require("vicious")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -45,13 +49,16 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.wallpaper = "/home/jules/.config/awesome/wallpaper-white.png"
+-- beautiful.init(gears.filesystem.get_themes_dir("config") .. "/themes/default/theme.lua")
+beautiful.init("/home/jules/.config/awesome/themes/default/theme.lua")
+-- beautiful.wallpaper = "/home/jules/.config/awesome/wallpaper-white.png"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
+filemanager = "thunar"
+browser = "firefox"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -199,6 +206,9 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
+    -- Load the widgets from ./widgets.lua
+    require("widgets")
+
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -217,6 +227,22 @@ awful.screen.connect_for_each_screen(function(s)
             s.mylayoutbox,
         },
     }
+
+    -- Create the wibox on bottom
+    s.mywibox2 = awful.wibar({ position = "bottom", screen = s})
+    s.mywibox2:setup {
+      layout = wibox.layout.align.horizontal,
+       { -- Left widgets
+        layout = wibox.layout.fixed.horizontal,
+        netwidget,
+        wifiwidget,
+        memwidget,
+        memwidget2,
+        batwidget,
+        cpuwidget,
+        cpuwidget2,
+       },
+    } 
 end)
 -- }}}
 
@@ -563,3 +589,7 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+awful.util.spawn_with_shell("/home/jules/.config/awesome/autorun.sh")
+-- ./autostart.lua
+require("autostart")

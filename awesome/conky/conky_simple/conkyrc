@@ -1,0 +1,90 @@
+conky.config = {
+	background = true,
+	font = 'Sans:size=8.9',
+--xftfont Sans:size=10
+	use_xft = true,
+	xftalpha = 0.9,
+	update_interval = 3.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_type = 'override',
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	minimum_width = 220, minimum_height = 5,
+	maximum_width = 440,
+	draw_shades = true,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	default_color = 'black',
+	default_shade_color = 'white',
+	default_outline_color = 'green',
+	alignment = 'top_left',
+	gap_x = 12,
+	gap_y = 45,
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	override_utf8_locale = true,
+	uppercase = true,-- set to yes if you want all text to be in uppercase
+
+};
+
+conky.text = [[
+${color white}SYSTEM ${hr 1}${color}
+
+Hostname: $alignr$nodename
+Kernel: $alignr$kernel
+Uptime: $alignr$uptime
+Temp: ${alignr}${exec sensors | grep "Core 0" | awk '{print $3}'}
+CPU: ${alignr}${freq} MHz
+Processes: ${alignr}$processes ($running_processes running)
+Load: ${alignr}$loadavg
+#Battery: ${battery_percent BAT0}% ${battery_bar BAT0}
+
+CPU1 ${alignr}${cpu cpu1}%
+${cpubar 3 cpu1}
+CPU2 ${alignr}${cpu cpu2}%
+${cpubar 3 cpu2}
+CPU3 ${alignr}${cpu cpu3}%
+${cpubar 3 cpu3}
+CPU4 ${alignr}${cpu cpu4}%
+${cpubar 3 cpu4}
+
+Ram ${alignr}$mem / $memmax ($memperc%)
+${membar 3}
+swap ${alignr}$swap / $swapmax ($swapperc%)
+${swapbar 3}
+
+Highest CPU $alignr CPU% MEM%
+${top name 1}$alignr${top cpu 1}${top mem 1}
+${top name 2}$alignr${top cpu 2}${top mem 2}
+${top name 3}$alignr${top cpu 3}${top mem 3}
+${top name 4}$alignr${top cpu 4}${top mem 4}
+${top name 5}$alignr${top cpu 5}${top mem 5}
+
+Highest MEM $alignr CPU% MEM%
+${top_mem name 1}$alignr${top_mem cpu 1}${top_mem mem 1}
+${top_mem name 2}$alignr${top_mem cpu 2}${top_mem mem 2}
+${top_mem name 3}$alignr${top_mem cpu 3}${top_mem mem 3}
+${top_mem name 4}$alignr${top_mem cpu 4}${top_mem mem 4}
+${top_mem name 5}$alignr${top_mem cpu 5}${top_mem mem 5}
+
+${color white}Filesystem ${hr 1}${color}
+Root: ${alignr}${fs_free /} / ${fs_size /}
+${fs_bar 2 /}
+
+${color white}WIRED CONNECTION${hr 1}${color}
+Down ${downspeed ens9}/s ${alignr}Up ${upspeed ens9}/s
+${downspeedgraph ens9 25,107} ${alignr}${upspeedgraph ens9 25,107}
+Total ${totaldown ens9} ${alignr}Total ${totalup ens9}
+
+${color white}WIFI CONNECTION ${hr 1}${color}
+Down ${downspeed wlp4s0}/s ${alignr}Up ${upspeed wlp4s0}/s
+${downspeedgraph wlp4s0 25,107} ${alignr}${upspeedgraph wlp4s0 25,107}
+Total ${totaldown wlp4s0} ${alignr}Total ${totalup wlp4s0}
+#${color white}WEATHER ${hr 1}${color}
+#
+#${execi 1800 /home/jules/.conky/conky_simple/weather.sh SWXX0006}
+]];
