@@ -1,13 +1,7 @@
 Packages:
   Continue to update the list of packages I need each time I remember / find one usefull.
 
-Installation:
-  Put a nice wallpaper :)
-
 Improvement:
-  Add genericity depending of the system (Debian-like, Fedora-like, ...).
-    This script uses ArchLinux package manager.
-  Add code to zoom in and out on the terminal.
   Found a way to change the wallpaper easily at will.
 
 Stuff:
