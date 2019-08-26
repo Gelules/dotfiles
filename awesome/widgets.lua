@@ -45,7 +45,7 @@ wifiwidget = wibox.widget.textbox()
 vicious.register(wifiwidget, vicious.widgets.wifi, 'Connected to <span color="#7F9F7F">${ssid}</span> at <span color="#7F9F7F">${linp}%</span> | ', 2, "wlp4s0")
 
 -- Possible network devices
-eths = { 'eth0', 'wlp4s0' }
+eths = { 'enp0s31f6', 'wlp4s0' }
 netwidget = wibox.widget.textbox()
 vicious.register( netwidget, vicious.widgets.net,
 function(widget,args)
@@ -56,7 +56,7 @@ if args["{"..e.." carrier}"] == 1 then
     if e == 'wlp4s0' then
         t=t..' '..'Wifi: <span color="#CC9933"> down: '..args['{'..e..' down_kb}']..' kbps</span>  <span color="#7F9F7F">up: ' ..args['{'..e..' up_kb}']..' kbps </span>'..'[ '..args['{'..e..' rx_gb}'].. ' GB // ' ..args['{'..e..' tx_gb}']..' GB ] '
     else
-        t=t..'| '..'Eth0: <span color="#CC9933"> down: '..args['{'..e..' down_kb}']..' kbps</span>  <span color="#7F9F7F">up: ' ..args['{'..e..' up_kb}']..' kbps </span>'..'[ '..args['{'..e..' rx_gb}'].. ' GB // ' ..args['{'..e..' tx_gb}']..' GB ] '
+        t=t..'| '..'enp0s31f6: <span color="#CC9933"> down: '..args['{'..e..' down_kb}']..' kbps</span>  <span color="#7F9F7F">up: ' ..args['{'..e..' up_kb}']..' kbps </span>'..'[ '..args['{'..e..' rx_gb}'].. ' GB // ' ..args['{'..e..' tx_gb}']..' GB ] '
     end
 end
 end
