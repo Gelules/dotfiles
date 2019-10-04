@@ -192,7 +192,7 @@ set nohlsearch
 set tabstop=8
 
 " The number of spaces inserted/removed when using < or >
-set shiftwidth=2
+set shiftwidth=4
 
 " The number of spaces inserted when you press tab.
 " -1 means the same value as shiftwidth
