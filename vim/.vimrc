@@ -42,6 +42,7 @@ call plug#begin('~/.vim/plugged')
 " Bag of mappings
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'romainl/vim-qf'
 
 " Navigation
 
