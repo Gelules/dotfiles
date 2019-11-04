@@ -132,9 +132,7 @@ set visualbell
 set t_vb=
 
 " Color the column after textwidth, usually the 80th
-if version >= 703
-  set colorcolumn=+1
-endif
+set colorcolumn=+1
 
 " Display whitespace characters
 set list
@@ -238,6 +236,9 @@ noremap ; :
 " errors left
 noremap <leader>cw :botright :cw<cr>
 
+" Add the termdebug built-in package
+packadd termdebug
+
 " Run make silently, then skip the 'Press ENTER to continue'
 noremap <leader>m :silent! :make! \| :redraw!<cr>
 
@@ -254,11 +255,9 @@ augroup last_position_jump
 augroup END
 
 " Persistent undo
-if version >= 703
-    set undofile
-    set undodir=~/.vimtmp/undo
-    silent !mkdir -p ~/.vimtmp/undo
-endif
+set undofile
+set undodir=~/.vimtmp/undo
+silent !mkdir -p ~/.vimtmp/undo
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin mappings and options
