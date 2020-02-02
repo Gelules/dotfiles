@@ -1,12 +1,14 @@
 [user]
-  name = Jules Aubert
-  email = aubertjules@gmail.com
+    name = Jules Aubert
+    email = aubertjules@gmail.com
 
 [color]
-  ui = true
+    ui = true
 
 [alias]
-  st = status
+    st = status
+    pl = pull
+    ph = push
 
 [push]
-  default = simple
+    default = simple
