@@ -99,6 +99,7 @@ precmd ()
 
 # Aliases
 alias ls='ls --color=auto'
+alias ll='ls -l'
 alias se='sudoedit'
 alias epinews='slrn -f ~/.jnewsrc-epita'
 alias valgrindcolor='~/.scripts/valgrind-color.sh'
@@ -117,6 +118,7 @@ up ()
 {
   sudo pacman -Syyu
   sudo pacman -Scc
+  sudo pacman -Rns $(pacman -Qdqt)
 }
 
 fuck ()
