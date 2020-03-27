@@ -59,7 +59,7 @@ then
   zip
   zsh"
 
-  yaourt_packages="
+  yay_packages="
   slrn
   uctags-git
   urxvt-font-size-git"
@@ -67,7 +67,7 @@ then
   sudo pacman -Syyu
   sudo pacman -S -y $pacman_packages
 
-  # yaourt installation
+  # yay installation
   cd /tmp/
   git clone https://aur.archlinux.org/package-query.git
   cd package-query
@@ -77,7 +77,7 @@ then
   cd yay
   makepkg -si
   cd ..
-  yay $yaourt_packages
+  yay $yay_packages
 
   sudo systemctl enable lightdm
 fi
