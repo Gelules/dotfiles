@@ -121,12 +121,9 @@ up ()
   sudo pacman -Rns $(pacman -Qdqt)
 }
 
-fuck ()
-{
-    if [ -n "$2" ]
-    then
-        echo 'Fuck you' $2
-        pkill -9 $2
+function fuck() {
+    if pkill -9 "$2"; then
+        echo ; echo " (╯°□°）╯︵$(echo "$2"|toilet -f term -F rotate)"; echo
     fi
 }
 

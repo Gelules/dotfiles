@@ -43,6 +43,8 @@ then
   texlive-most
   thunar
   tree
+  ttf-liberation
+  ttf-droid
   valgrind
   unzip
   vim
