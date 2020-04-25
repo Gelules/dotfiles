@@ -119,6 +119,9 @@ up ()
   sudo pacman -Syyu
   sudo pacman -Scc
   sudo pacman -Rns $(pacman -Qdqt)
+  yay -Syyu
+  yay -Scc
+  yay -Rns $(yay -Qdqt)
 }
 
 function fuck() {
