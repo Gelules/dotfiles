@@ -69,6 +69,7 @@ then
 
   yay_packages="
   slrn
+  toilet
   uctags-git
   urxvt-font-size-git"
 
