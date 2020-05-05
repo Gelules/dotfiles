@@ -31,6 +31,8 @@ then
   linux-headers
   ltrace
   make
+  man-db
+  pan-pages
   most
   namcap
   network-manager-applet
