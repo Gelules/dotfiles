@@ -47,6 +47,7 @@ then
   ttf-droid
   valgrind
   unzip
+  vicious
   vim
   vlc
   volumeicon
