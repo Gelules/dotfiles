@@ -21,11 +21,13 @@ then
   git
   imagemagick
   inkscape
+  iw
   kile
   libreoffice-fresh
   lightdm
   lightdm-gtk-greeter
   lightdm-gtk-greeter-settings
+  linux-firmware
   linux-headers
   ltrace
   make
