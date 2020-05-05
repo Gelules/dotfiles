@@ -31,6 +31,7 @@ then
   make
   most
   namcap
+  network-manager-applet
   nmap
   pandoc
   pkg-config
