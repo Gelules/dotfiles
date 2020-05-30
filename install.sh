@@ -21,16 +21,21 @@ then
   git
   imagemagick
   inkscape
+  iw
   kile
   libreoffice-fresh
   lightdm
   lightdm-gtk-greeter
   lightdm-gtk-greeter-settings
+  linux-firmware
   linux-headers
   ltrace
   make
+  man-db
+  pan-pages
   most
   namcap
+  network-manager-applet
   nmap
   pandoc
   pkg-config
@@ -43,8 +48,11 @@ then
   texlive-most
   thunar
   tree
+  ttf-liberation
+  ttf-droid
   valgrind
   unzip
+  vicious
   vim
   vlc
   volumeicon
@@ -59,25 +67,26 @@ then
   zip
   zsh"
 
-  yaourt_packages="
+  yay_packages="
   slrn
+  toilet
   uctags-git
-  urxvt-font-size"
+  urxvt-font-size-git"
 
   sudo pacman -Syyu
   sudo pacman -S -y $pacman_packages
 
-  # yaourt installation
+  # yay installation
   cd /tmp/
   git clone https://aur.archlinux.org/package-query.git
   cd package-query
   makepkg -si
   cd ..
-  git clone https://aur.archlinux.org/yaourt.git
-  cd yaourt
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
   makepkg -si
   cd ..
-  yaourt $yaourt_packages
+  yay $yay_packages
 
   sudo systemctl enable lightdm
 fi
