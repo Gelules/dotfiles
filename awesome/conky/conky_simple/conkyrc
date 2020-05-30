@@ -1,7 +1,7 @@
 conky.config = {
 	background = true,
-	font = 'Sans:size=8.9',
---xftfont Sans:size=10
+	font = 'Sans:size=20.0',
+--xftfont Sans:size=20
 	use_xft = true,
 	xftalpha = 0.9,
 	update_interval = 3.0,
@@ -11,8 +11,8 @@ conky.config = {
 	own_window_transparent = true,
 	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
 	double_buffer = true,
-	minimum_width = 220, minimum_height = 5,
-	maximum_width = 440,
+	minimum_width = 440, minimum_height = 5,
+	maximum_width = 880,
 	draw_shades = true,
 	draw_outline = false,
 	draw_borders = false,
@@ -37,7 +37,7 @@ ${color white}SYSTEM ${hr 1}${color}
 Hostname: $alignr$nodename
 Kernel: $alignr$kernel
 Uptime: $alignr$uptime
-Temp: ${alignr}${exec sensors | grep "Core 0" | awk '{print $3}'}
+# Temp: ${alignr}${exec sensors | grep "Core 0" | awk '{print $3}'}
 CPU: ${alignr}${freq} MHz
 Processes: ${alignr}$processes ($running_processes running)
 Load: ${alignr}$loadavg
@@ -45,17 +45,17 @@ Load: ${alignr}$loadavg
 
 CPU1 ${alignr}${cpu cpu1}%
 ${cpubar 3 cpu1}
-CPU2 ${alignr}${cpu cpu2}%
-${cpubar 3 cpu2}
-CPU3 ${alignr}${cpu cpu3}%
-${cpubar 3 cpu3}
-CPU4 ${alignr}${cpu cpu4}%
-${cpubar 3 cpu4}
+#CPU2 ${alignr}${cpu cpu2}%
+#${cpubar 3 cpu2}
+#CPU3 ${alignr}${cpu cpu3}%
+#${cpubar 3 cpu3}
+#CPU4 ${alignr}${cpu cpu4}%
+#${cpubar 3 cpu4}
 
 Ram ${alignr}$mem / $memmax ($memperc%)
 ${membar 3}
-swap ${alignr}$swap / $swapmax ($swapperc%)
-${swapbar 3}
+# swap ${alignr}$swap / $swapmax ($swapperc%)
+# ${swapbar 3}
 
 Highest CPU $alignr CPU% MEM%
 ${top name 1}$alignr${top cpu 1}${top mem 1}
@@ -76,15 +76,15 @@ Root: ${alignr}${fs_free /} / ${fs_size /}
 ${fs_bar 2 /}
 
 ${color white}WIRED CONNECTION${hr 1}${color}
-Down ${downspeed ens9}/s ${alignr}Up ${upspeed ens9}/s
-${downspeedgraph ens9 25,107} ${alignr}${upspeedgraph ens9 25,107}
-Total ${totaldown ens9} ${alignr}Total ${totalup ens9}
+Down ${downspeed enp0s3}/s ${alignr}Up ${upspeed enp0s3}/s
+${downspeedgraph enp0s3 50,214} ${alignr}${upspeedgraph enp0s3 50,214}
+Total ${totaldown enp0s3} ${alignr}Total ${totalup enp0s3}
 
-${color white}WIFI CONNECTION ${hr 1}${color}
-Down ${downspeed wlp4s0}/s ${alignr}Up ${upspeed wlp4s0}/s
-${downspeedgraph wlp4s0 25,107} ${alignr}${upspeedgraph wlp4s0 25,107}
-Total ${totaldown wlp4s0} ${alignr}Total ${totalup wlp4s0}
+#${color white}WIFI CONNECTION ${hr 1}${color}
+#Down ${downspeed wlp4s0}/s ${alignr}Up ${upspeed wlp4s0}/s
+#${downspeedgraph wlp4s0 25,107} ${alignr}${upspeedgraph wlp4s0 25,107}
+#Total ${totaldown wlp4s0} ${alignr}Total ${totalup wlp4s0}
 #${color white}WEATHER ${hr 1}${color}
 #
-#${execi 1800 /home/jules/.conky/conky_simple/weather.sh SWXX0006}
+#${execi 1800 /home/gelules/.conky/conky_simple/weather.sh SWXX0006}
 ]];
