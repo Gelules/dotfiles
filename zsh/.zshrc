@@ -119,34 +119,16 @@ up ()
   sudo pacman -Syyu
   sudo pacman -Scc
   sudo pacman -Rns $(pacman -Qdqt)
-<<<<<<< HEAD
+  yay -Syyu
+  yay -Scc
+  yay -Rns $(yay -Qdqt)
 }
 
 fuck() {
   if killall -9 "$2"; then
     echo ; echo " (╯°□°)╯ ~$(echo "$2"|toilet -f term -F rotate)"; echo
   fi
-=======
-  yay -Syyu
-  yay -Scc
-  yay -Rns $(yay -Qdqt)
-}
-
-function fuck() {
-    if pkill -9 "$2"; then
-        echo ; echo " (╯°□°）╯︵$(echo "$2"|toilet -f term -F rotate)"; echo
-    fi
->>>>>>> 431c41b8f16aba4311fa6f8b668a4fe5cf110661
-}
-
-# fuck ()
-# {
-#     if [ -n "$2" ]
-#     then
-#         echo 'Fuck you' $2
-#         pkill -9 $2
-#     fi
-# }
+  }
 
 blackscreen ()
 {
