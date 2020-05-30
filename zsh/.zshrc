@@ -117,16 +117,23 @@ up ()
 {
   sudo pacman -Syyu
   sudo pacman -Scc
+  sudo pacman -Rns $(pacman -Qdqt)
 }
 
-fuck ()
-{
-    if [ -n "$2" ]
-    then
-        echo 'Fuck you' $2
-        pkill -9 $2
-    fi
+fuck() {
+  if killall -9 "$2"; then
+    echo ; echo " (╯°□°)╯ ~$(echo "$2"|toilet -f term -F rotate)"; echo
+  fi
 }
+
+# fuck ()
+# {
+#     if [ -n "$2" ]
+#     then
+#         echo 'Fuck you' $2
+#         pkill -9 $2
+#     fi
+# }
 
 blackscreen ()
 {
@@ -149,3 +156,4 @@ export PATH="/sbin:$PATH"
 export EDITOR='vim'
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
+
