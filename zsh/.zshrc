@@ -107,11 +107,7 @@ alias valgrindcolor='~/.scripts/valgrind-color.sh'
 # Functions
 mkcd ()
 {
-    if [ ! -d "$1" ]
-    then
-        mkdir $1
-    fi
-    cd $1
+    [ ! -d "$1" ] && mkdir $1 ; cd $1
 }
 
 up ()
