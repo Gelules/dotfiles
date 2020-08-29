@@ -107,11 +107,7 @@ alias valgrindcolor='~/.scripts/valgrind-color.sh'
 # Functions
 mkcd ()
 {
-    if [ ! -d "$1" ]
-    then
-        mkdir $1
-    fi
-    cd $1
+    [ ! -d "$1" ] && mkdir $1 ; cd $1
 }
 
 up ()
@@ -124,11 +120,11 @@ up ()
   yay -Rns $(yay -Qdqt)
 }
 
-function fuck() {
-    if pkill -9 "$2"; then
-        echo ; echo " (╯°□°）╯︵$(echo "$2"|toilet -f term -F rotate)"; echo
-    fi
-}
+fuck() {
+  if killall -9 "$2"; then
+    echo ; echo " (╯°□°)╯ ~$(echo "$2"|toilet -f term -F rotate)"; echo
+  fi
+  }
 
 blackscreen ()
 {
@@ -151,3 +147,4 @@ export PATH="/sbin:$PATH"
 export EDITOR='vim'
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
+
