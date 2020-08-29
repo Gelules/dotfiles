@@ -52,15 +52,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'
 
-" Filetype specific plugins
-Plug 'pearofducks/ansible-vim'
-
 " Tag management
 Plug 'ludovicchabant/vim-gutentags'
 
 " 'IDE' features
 Plug 'tpope/vim-fugitive'
-Plug 'janko/vim-test'
 
 call plug#end()
 
