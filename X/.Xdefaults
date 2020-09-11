@@ -1,4 +1,4 @@
-URxvt*font: xft:DejaVu Sans Mono:size=26
+URxvt*font: xft:DejaVu Sans Mono:size=12
 URxvt*scrollBar: false
 *background: Black
 *foreground: White

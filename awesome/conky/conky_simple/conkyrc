@@ -1,6 +1,6 @@
 conky.config = {
 	background = true,
-	font = 'Sans:size=20.0',
+	font = 'Sans:size=15.0',
 --xftfont Sans:size=20
 	use_xft = true,
 	xftalpha = 0.9,
@@ -76,9 +76,9 @@ Root: ${alignr}${fs_free /} / ${fs_size /}
 ${fs_bar 2 /}
 
 ${color white}WIRED CONNECTION${hr 1}${color}
-Down ${downspeed enp0s3}/s ${alignr}Up ${upspeed enp0s3}/s
-${downspeedgraph enp0s3 50,214} ${alignr}${upspeedgraph enp0s3 50,214}
-Total ${totaldown enp0s3} ${alignr}Total ${totalup enp0s3}
+Down ${downspeed wlp4s0}/s ${alignr}Up ${upspeed wlp4s0}/s
+${downspeedgraph wlp4s0 50,214} ${alignr}${upspeedgraph wlp4s0 50,214}
+Total ${totaldown wlp4s0} ${alignr}Total ${totalup wlp4s0}
 
 #${color white}WIFI CONNECTION ${hr 1}${color}
 #Down ${downspeed wlp4s0}/s ${alignr}Up ${upspeed wlp4s0}/s
