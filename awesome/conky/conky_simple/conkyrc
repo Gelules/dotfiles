@@ -86,5 +86,5 @@ Total ${totaldown enp0s3} ${alignr}Total ${totalup enp0s3}
 #Total ${totaldown wlp4s0} ${alignr}Total ${totalup wlp4s0}
 #${color white}WEATHER ${hr 1}${color}
 #
-#${execi 1800 /home/gelules/.conky/conky_simple/weather.sh SWXX0006}
+#${execi 1800 /home/jules/.conky/conky_simple/weather.sh SWXX0006}
 ]];

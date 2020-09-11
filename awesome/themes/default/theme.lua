@@ -99,7 +99,7 @@ theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/m
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
 -- theme.wallpaper = themes_path.."default/background.png"
-theme.wallpaper = "/home/gelules/.config/awesome/wallpaper-white.png"
+theme.wallpaper = "/home/jules/.config/awesome/wallpaper-white.png"
 
 
 -- You can use your own layout icons like this:

@@ -50,7 +50,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir("config") .. "/themes/default/theme.lua")
-beautiful.init("/home/gelules/.config/awesome/themes/default/theme.lua")
+beautiful.init("/home/jules/.config/awesome/themes/default/theme.lua")
 -- beautiful.wallpaper = "/home/gelules/.config/awesome/wallpaper-white.png"
 
 -- This is used later as the default terminal and editor to run.
@@ -590,6 +590,6 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awful.util.spawn_with_shell("/home/gelules/.config/awesome/autorun.sh")
+awful.util.spawn_with_shell("/home/jules/.config/awesome/autorun.sh")
 -- ./autostart.lua
 require("autostart")
