@@ -143,7 +143,6 @@ export PROMPT='%F{207}%n% %F{75}@%F{207}%m% %F{75}[%F{214}%~% %F{75}]%F{75}$%f '
 export RPROMPT='${vcs_info_msg_0_}'
 export PAGER='most'
 export NNTPSERVER='news.epita.fr'
-export PATH="/sbin:$PATH"
 export EDITOR='vim'
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
