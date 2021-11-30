@@ -64,8 +64,8 @@ sed -r ''s/\(Syscall\ param\.*\)/`printf "${bldred}"`\\1`printf "${txtrst}"`/g''
 sed -r ''s/\(Invalid\ free\.*\)/`printf "${bldred}"`\\1`printf "${txtrst}"`/g''          | \
 sed -r ''s/\(Address\ 0x[0-9a-f]+\ is\ .*\)/`printf "\033[34m"`\\1`printf "${txtrst}"`/g''      | \
 # Color functions name
-sed -r ''s/\(at\ 0x[0-9a-fA-F]+:\ \)\([a-z0-9A-Z]+\)/\\1`printf "${bldylw}"`\\2`printf "${txtrst}"`/g''  | \
-sed -r ''s/\(by\ 0x[0-9a-fA-F]+:\ \)\([a-z0-9A-Z]+\)/\\1`printf "${bldylw}"`\\2`printf "${txtrst}"`/g''  | \
+sed -r ''s/\(at\ 0x[0-9a-fA-F]+:\ \)\([a-z0-9A-Z_]+\)/\\1`printf "${bldylw}"`\\2`printf "${txtrst}"`/g''  | \
+sed -r ''s/\(by\ 0x[0-9a-fA-F]+:\ \)\([a-z0-9A-Z_]+\)/\\1`printf "${bldylw}"`\\2`printf "${txtrst}"`/g''  | \
 # Color {x} bytes in {y} blocks
 sed -r ''s/\(\ 0\)\(\ bytes?\ in\ \)\(0\)/`printf "${bldgrn}"`\\1`printf "${txtrst}"`\\2`printf "${bldgrn}"`\\3`printf "${txtrst}"`/g''         | \
 sed -r ''s/\([0-9]+\)\(\ bytes?\ in\ \)\([0-9]+\)/`printf "${bldred}"`\\1`printf "${txtrst}"`\\2`printf "${bldblu}"`\\3`printf "${txtrst}"`/g'' | \
