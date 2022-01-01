@@ -32,7 +32,7 @@ then
   ltrace
   make
   man-db
-  pan-pages
+  man-pages
   most
   namcap
   network-manager-applet
