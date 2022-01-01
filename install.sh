@@ -86,7 +86,10 @@ then
   cd yay
   makepkg -si
   cd ..
-  yay $yay_packages
+  for package in $yay_packages
+  do
+      yay $package
+  done
 
   sudo systemctl enable lightdm
 fi
