@@ -12,6 +12,3 @@ spawn.with_shell("sleep 3; xfce4-power-manager")
 
 -- Volume icon
 spawn.with_shell("sleep 3; volumeicon")
-
--- Start Conky
-spawn.with_shell("conky -c /home/jules/.config/awesome/conky/conky_simple/conkyrc")

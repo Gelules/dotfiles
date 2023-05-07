@@ -101,7 +101,7 @@ stow slrn
 stow utils
 stow vim
 stow zsh
-stow X
+stow alacritty
 
 # Awesome needs to be symlinked to ~/.config/awesome
 mkdir -p ~/.config/awesome

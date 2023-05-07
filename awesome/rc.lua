@@ -18,10 +18,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-
--- Vicious
-local vicious = require("vicious")
-
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -54,7 +50,7 @@ beautiful.init("/home/jules/.config/awesome/themes/default/theme.lua")
 -- beautiful.wallpaper = "/home/gelules/.config/awesome/wallpaper-white.png"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 filemanager = "thunar"

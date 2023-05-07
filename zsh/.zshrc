@@ -120,6 +120,12 @@ up ()
   yay -Rns $(yay -Qdqt)
 }
 
+setup ()
+{
+    up
+    vim -c ':PlugUpgrade' -c ':PlugUpdate' -c ':quitall!'
+}
+
 fuck() {
   if killall -9 "$2"; then
     echo ; echo " (╯°□°)╯ ~$(echo "$2"|toilet -f term -F rotate)"; echo
@@ -147,3 +153,10 @@ export EDITOR='vim'
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 export PATH=$PATH:~/.local/bin
+
+if [ ! -f /tmp/zsh/updated ]
+then
+    mkdir /tmp/zsh
+    touch /tmp/zsh/updated
+    setup
+fi
