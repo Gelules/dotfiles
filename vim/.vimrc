@@ -233,7 +233,7 @@ noremap ; :
 noremap <leader>cw :botright :cw<cr>
 
 " Add the termdebug built-in package
-packadd termdebug
+packadd! termdebug
 
 " Run make silently, then skip the 'Press ENTER to continue'
 noremap <leader>m :silent! :make! \| :redraw!<cr>
