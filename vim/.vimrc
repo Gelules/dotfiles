@@ -53,9 +53,13 @@ Plug 'luochen1990/rainbow'
 
 " Tag management
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'preservim/tagbar'
 
 " 'IDE' features
 Plug 'tpope/vim-fugitive'
+
+" Programming languages
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
