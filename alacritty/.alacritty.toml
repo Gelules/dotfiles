@@ -1,2 +1,18 @@
+[window]
+decorations = "Full"
+opacity = 0.5
+blur = true
+
 [font]
-size = 21
+normal.family = "Comic Code"
+bold.family = "Comic Code"
+italic.family = "Comic Code"
+bold_italic.family = "Comic Code"
+size = 42
+
+[cursor]
+style.shape = "Beam"
+style.blinking = "Always"
+blink_interval = 750
+unfocused_hollow = true
+thickness = 0.15
