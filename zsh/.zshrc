@@ -124,13 +124,15 @@ setup ()
 {
     up
     vim -c ':PlugUpgrade' -c ':PlugUpdate' -c ':quitall!'
+    blackscreen off
 }
 
-fuck() {
+fuck()
+{
   if killall -9 "$2"; then
     echo ; echo " (╯°□°)╯ ~$(echo "$2"|toilet -f term -F rotate)"; echo
   fi
-  }
+}
 
 blackscreen ()
 {
@@ -148,6 +150,7 @@ blackscreen ()
 export PROMPT='%F{207}%n% %F{75}@%F{207}%m% %F{75}[%F{214}%~% %F{75}]%F{75}$%f '
 export RPROMPT='${vcs_info_msg_0_}'
 export PAGER='most'
+export GROFF_NO_SGR=0
 export NNTPSERVER='snews://news.cri.epita.fr:563'
 export EDITOR='vim'
 export LANG='en_US.UTF-8'
