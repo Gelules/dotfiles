@@ -67,8 +67,7 @@ then
   zip
   zsh"
 
-  yay_packages="
-  slrn
+  paru_packages="
   toilet
   uctags-git
   urxvt-font-size-git"
@@ -76,19 +75,19 @@ then
   sudo pacman -Syyu
   sudo pacman -S -y $pacman_packages
 
-  # yay installation
+  # paru installation
   cd /tmp/
   git clone https://aur.archlinux.org/package-query.git
   cd package-query
   makepkg -si
   cd ..
-  git clone https://aur.archlinux.org/yay.git
-  cd yay
+  git clone https://aur.archlinux.org/paru.git
+  cd paru
   makepkg -si
   cd ..
-  for package in $yay_packages
+  for package in $paru_packages
   do
-      yay $package
+      paru $package
   done
 
   sudo systemctl enable lightdm

@@ -115,16 +115,18 @@ up ()
   sudo pacman -Syyu
   sudo pacman -Scc
   sudo pacman -Rns $(pacman -Qdqt)
-  yay -Syyu
-  yay -Scc
-  yay -Rns $(yay -Qdqt)
+  paru -Syyu
+  paru -Scc
+  paru -Rns $(paru -Qdqt)
 }
 
 setup ()
 {
     up
+    rustup update
     vim -c ':PlugUpgrade' -c ':PlugUpdate' -c ':quitall!'
     blackscreen off
+    neofetch
 }
 
 fuck()
