@@ -1,0 +1,67 @@
+# C / C++
+clang
+llvm
+cmake
+meson
+ninja
+gdb
+valgrind
+strace
+ltrace
+ctags
+doxygen
+criterion
+gcovr
+boost
+yaml-cpp
+# Rust, Zig, scripting
+rustup                  # pacman-managed on a fresh install. Here the curl|sh one in ~/.cargo/bin stays first
+                        # in PATH until `rustup self uninstall` (which deletes all of ~/.cargo)
+zig
+just
+shellcheck
+nodejs
+npm
+yarn
+maven
+python-pipx
+python-pygame
+python-qrcode
+python-google-auth-oauthlib
+sdl3_image
+tk
+# Editors and CLI tools
+neovim
+emacs
+code
+godot
+bat
+jq
+glow
+tmux
+screen
+bc
+ncdu
+# Containers and VMs
+docker
+libvirt
+virt-manager
+qemu-full
+dnsmasq                 # libvirt's default NAT network needs it (missing today)
+dmidecode               # libvirt optdep
+sshfs
+# Databases
+postgresql
+sqlfluff
+# Network and reverse engineering
+wireshark-qt
+nmap
+tcpdump
+bind                    # dig
+ldns                    # drill
+mtr
+traceroute
+fping
+iftop
+iotop
+binwalk

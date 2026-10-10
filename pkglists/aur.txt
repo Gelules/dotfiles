@@ -1,0 +1,10 @@
+# AUR, installed with 'paru -S --needed' after bootstrap.sh builds paru.
+# Review each PKGBUILD when paru asks: AUR packages are user-submitted.
+claude-desktop
+nordvpn-bin
+piper-tts-git
+python2                 # EOL since 2020 and rebuilt from source on every update: still needed?
+hfsprogs                # gparted HFS+ support: only for Mac disks
+
+# Dropped: neofetch (fastfetch, apps.txt), package-query (yaourt era, nothing uses it),
+#          paru-debug, package-query-debug (makepkg 'debug' option, see home/.config/pacman/makepkg.conf)

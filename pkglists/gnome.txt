@@ -1,0 +1,4 @@
+# Optional: only if you keep GNOME as a fallback session.
+# Install with: ./bootstrap.sh base desktop dev apps gnome
+# The 'gnome' group includes gdm; bootstrap.sh keeps whichever display manager is already enabled.
+gnome

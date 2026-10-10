@@ -1,0 +1,30 @@
+{
+    "hostname": "archpping",
+    "timezone": "Europe/Paris",
+    "locale_config": {
+        "kb_layout": "fr",
+        "sys_lang": "en_GB.UTF-8",
+        "sys_enc": "UTF-8"
+    },
+    "bootloader_config": {
+        "bootloader": "Systemd-boot",
+        "uki": false
+    },
+    "network_config": {
+        "type": "nm"
+    },
+    "app_config": {
+        "audio_config": { "audio": "pipewire" },
+        "bluetooth_config": { "enabled": true },
+        "power_management_config": { "power_management": "power-profiles-daemon" }
+    },
+    "profile_config": {
+        "profile": { "main": "Xorg" },
+        "gfx_driver": "Intel (open-source)",
+        "greeter": "lightdm-gtk-greeter"
+    },
+    "packages": ["git"],
+    "custom_commands": [
+        "u=$(id -nu 1000) && runuser -u \"$u\" -- git clone https://github.com/Gelules/dotfiles.git \"/home/$u/.dotfiles\""
+    ]
+}

@@ -1,0 +1,54 @@
+[window]
+opacity = 0.93
+# Keeps the text clear of picom's 8 px rounded corners
+padding = { x = 6, y = 6 }
+dynamic_padding = true
+
+[font]
+# Commercial font, not in the repo: restore it to ~/.local/share/fonts (see README)
+normal.family = "Comic Code"
+# Was 11: with Xft.dpi 120 (~/.Xresources) winit scales by 1.25 instead of its
+# XRandR guess (1.667), so 14.5 keeps the same glyph size
+size = 14.5
+
+[cursor]
+style.shape = "Beam"
+style.blinking = "Always"
+
+# "Stencil" palette: white accent (cursor, selection, search); the 16 ANSI colours are the same as
+# ~/.Xresources and keep a real red for errors and diff deletions
+[colors.primary]
+background = "#0c0c0c"
+foreground = "#d4d4d4"
+
+[colors.cursor]
+text = "#0c0c0c"
+cursor = "#ffffff"
+
+[colors.selection]
+text = "#ffffff"
+background = "#3a3a3a"
+
+[colors.search]
+matches = { foreground = "#0c0c0c", background = "#a8a8a8" }
+focused_match = { foreground = "#0c0c0c", background = "#ffffff" }
+
+[colors.normal]
+black = "#1a1a1a"
+red = "#ea3a3f"
+green = "#8fb573"
+yellow = "#d9b26f"
+blue = "#7fa1c3"
+magenta = "#b88fc1"
+cyan = "#7fb8b0"
+white = "#cfcfcf"
+
+[colors.bright]
+black = "#6e6e6e"
+red = "#ff5a5f"
+green = "#a9cf8e"
+yellow = "#ebc98d"
+blue = "#9fbde0"
+magenta = "#d0a9d8"
+cyan = "#9dd4cc"
+white = "#ffffff"

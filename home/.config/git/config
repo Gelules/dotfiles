@@ -1,0 +1,25 @@
+[user]
+    name = Gélules
+    email = gelules.cours@gmail.com
+
+[alias]
+    st = status
+    pl = pull
+    ph = push
+
+[init]
+    defaultBranch = master
+[pull]
+    rebase = true
+[rebase]
+    autoStash = true
+[fetch]
+    prune = true
+[push]
+    autoSetupRemote = true
+[merge]
+    conflictStyle = zdiff3
+[diff]
+    algorithm = histogram
+[rerere]
+    enabled = true

@@ -1,0 +1,35 @@
+! ~/.Xresources -- merged at login by GDM (/etc/gdm/Xsession runs
+! `xrdb -nocpp -merge ~/.Xresources`), which needs the xorg-xrdb package
+! -nocpp: no #define, literal values only.
+
+! 1.25x like the GNOME session (monitors.xml scale 1.25). Read by awesome
+! (beautiful dpi + s.dpi), GTK, Qt, Firefox and alacritty (winit).
+Xft.dpi: 120
+! Same rendering as GNOME here: grayscale AA, slight hinting.
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.hintstyle: hintslight
+Xft.rgba: none
+! Adwaita (already the default theme) has a native 30 px size (= 24 x 1.25).
+Xcursor.size: 30
+
+! 16 colours = alacritty palette. the awesome hotkeys popup colours its
+! group labels with color1..15 from here (fallback palette otherwise).
+*.background: #0c0c0c
+*.foreground: #d4d4d4
+*.color0:  #1a1a1a
+*.color1:  #ea3a3f
+*.color2:  #8fb573
+*.color3:  #d9b26f
+*.color4:  #7fa1c3
+*.color5:  #b88fc1
+*.color6:  #7fb8b0
+*.color7:  #cfcfcf
+*.color8:  #6e6e6e
+*.color9:  #ff5a5f
+*.color10: #a9cf8e
+*.color11: #ebc98d
+*.color12: #9fbde0
+*.color13: #d0a9d8
+*.color14: #9dd4cc
+*.color15: #ffffff

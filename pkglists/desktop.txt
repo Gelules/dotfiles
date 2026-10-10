@@ -1,0 +1,41 @@
+# X11 + awesome + rice. Display manager: LightDM (see TREE.md).
+xorg-server
+xorg-xset               # caffeine toggle (widgets/session.lua)
+xorg-xrdb               # loads ~/.Xresources (Xft.dpi: 120) at login: GDM and LightDM run xrdb, only lightdm depends on it
+awesome
+picom                   # compositor (alacritty opacity/blur)
+alacritty
+i3lock
+xss-lock                # locks on suspend/lid close through logind
+network-manager-applet  # nm-applet: wifi list in the systray
+blueman                 # blueman-applet
+pavucontrol             # per-app routing; the volume slider itself lives in the wibar widget
+polkit-gnome            # polkit agent: nothing answers polkit prompts under awesome today
+gnome-keyring           # Secret Service for discord/code/claude-desktop, unlocked by LightDM's PAM
+lightdm
+lightdm-gtk-greeter
+xdg-desktop-portal-gtk
+xdg-utils
+thunar
+gvfs                    # trash and USB automount in Thunar
+feh
+scrot
+xclip
+xdotool
+arandr
+xtrlock                 # redundant with i3lock? (xtrlock leaves the screen visible)
+zathura
+zathura-pdf-poppler     # PDF backend (none installed today). poppler-glib is already there; mupdf would pull tesseract
+ttf-nerd-fonts-symbols  # wibar glyphs: Font Awesome 4 code points (U+F000-F2E0), same as awesome-terminal-fonts
+adw-gtk-theme           # gtk-3.0/gtk-4.0 settings.ini: adw-gtk3-dark
+papirus-icon-theme      # settings.ini + theme.lua icon_theme: Papirus-Dark
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+
+# Dropped: pasystray (replaced by the wibar volume widget with a slider),
+#          brightnessctl (widgets/brightness.lua goes through logind with busctl, part of systemd),
+#          playerctl, rofi (optional: nothing binds media keys; Mod4+p keeps the built-in menubar),
+#          awesome-terminal-fonts (replaced by ttf-nerd-fonts-symbols),
+#          lua-lgi (Lua 5.5 build; awesome 4.3 depends on lua53-lgi),
+#          gdm (only if GNOME goes, see gnome.txt)

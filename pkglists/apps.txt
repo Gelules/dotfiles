@@ -1,0 +1,43 @@
+firefox
+thunderbird
+discord
+libreoffice-fresh
+gimp
+inkscape
+audacity
+obs-studio
+obs-studio-plugin-browser
+vlc
+vlc-plugins-all
+evince
+imagemagick
+fastfetch               # neofetch is unmaintained and AUR-only now: setup() in .zshrc calls fastfetch
+toilet                  # used by fuck() in .zshrc (moved from the AUR to extra)
+ollama
+qflipper
+wine
+wine-gecko
+wine-mono
+deluge-gtk              # you also have transmission-cli/-gtk/-qt: keep one client
+# TeX: texlive-meta = TeX Live without docs (4.1 GB today). texlive-doc (4.4 GiB of PDFs) is dropped:
+# texdoc.org serves them. You had all 17 texlive-lang* packs: keep only the ones you use.
+texlive-meta
+texlive-langfrench
+texlive-langenglish
+pandoc-cli
+perl-yaml-tiny          # latexindent
+perl-file-homedir       # latexindent
+perl-tk                 # texdoctk
+perl-ipc-system-simple
+ed
+wdiff
+fontforge
+# Disks
+gparted
+btrfs-progs
+xfsprogs
+f2fs-tools
+
+# Dropped: piper (gaming-mouse GUI from extra, installed by mistake instead of piper TTS),
+#          transmission-*, epiphany/papers/... (GNOME apps, see gnome.txt),
+#          bcachefs-tools jfsutils nilfs-utils udftools mtools (gparted optdeps you never use?)

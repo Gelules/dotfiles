@@ -1,0 +1,53 @@
+# Base system: boots, networks, sounds on this ThinkPad (Meteor Lake).
+# One name per line, '#' starts a comment. Official repos only (AUR -> aur.txt).
+base
+base-devel
+linux
+linux-headers
+linux-firmware
+intel-ucode
+lvm2                    # root is on LVM
+sof-firmware            # Meteor Lake audio: no sound without it
+alsa-utils
+intel-media-driver      # VA-API video decoding
+libva-utils             # vainfo
+vulkan-intel            # no Vulkan driver today (/usr/share/vulkan/icd.d is empty): Godot 4 wants it
+networkmanager
+wireless-regdb
+bluez
+bluez-utils
+pipewire
+pipewire-pulse
+pipewire-alsa           # route ALSA-only apps through PipeWire (missing today)
+pipewire-jack           # pins the jack provider: on a fresh system pacman defaults to jack2
+wireplumber
+power-profiles-daemon   # laptop with no power management today (xfce4-power-manager is not installed)
+fprintd                 # fingerprint reader
+reflector
+pacman-contrib          # paccache.timer (replaces 'pacman -Scc' in up()), checkupdates
+git
+stow
+zsh
+vim
+openssh
+man-db
+man-pages
+most                    # MANPAGER in ~/.profile
+htop
+tree
+rsync
+wget
+unzip
+zip
+lsof
+plocate
+usbutils
+dosfstools
+exfatprogs
+ntfs-3g                 # Windows dual boot on the same NVMe
+
+# Dropped from 'pacman -Qqe': nano (vim), i3-wm/i3status (unused default i3 config), dialog, zenity (unused?)
+# Shell comfort (sourced at the end of .zshrc, no plugin manager)
+zsh-syntax-highlighting
+fzf                     # Ctrl-R history, Ctrl-T files, Alt-C dirs: eval "$(fzf --zsh)"
+zoxide                  # z <dir>: eval "$(zoxide init zsh)"
