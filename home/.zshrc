@@ -104,12 +104,15 @@ up ()
 
 setup ()
 {
-    up && rustup update && vim -c ':PlugUpgrade' -c ':PlugUpdate' -c ':quitall!' && fastfetch
+    up
+    rustup update
+    vim -c ':PlugUpgrade' -c ':PlugUpdate' -c ':quitall!'
+    fastfetch
 }
 
 fuck()
 {
-  if killall "$2"; then
+  if killall -9 "$2"; then
     echo ; echo " (╯°□°)╯ ~$(echo "$2"|toilet -f term -F rotate)"; echo
   fi
 }
