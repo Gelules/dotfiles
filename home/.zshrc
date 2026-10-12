@@ -97,13 +97,14 @@ mkcd ()
 
 up ()
 {
-  paru -Pw                  # unread Arch news
-  paru -Syu || return       # repo + AUR in one pass (the cache is trimmed by paccache.timer)
+  paru -Syu || return       # repo + AUR in one pass, Arch news first (NewsOnUpgrade, ~/.config/paru/paru.conf).
+                            # The cache is trimmed by paccache.timer
   if pacman -Qdtq >/dev/null; then sudo pacman -Rns $(pacman -Qdtq); fi
 }
 
 setup ()
 {
+    setopt local_options err_return   # stop at the first failure (e.g. "n" to paru after reading the news)
     up
     rustup update
     vim -c ':PlugUpgrade' -c ':PlugUpdate' -c ':quitall!'
@@ -130,7 +131,8 @@ blackscreen ()
 }
 
 # Prompt (shell settings, not exported). EDITOR, MANPAGER... are in ~/.profile
-PROMPT='%F{207}%n% %F{75}@%F{207}%m% %F{75}[%F{214}%~% %F{75}]%F{75}$%f '
+# %(?..X) prints X only when the last command failed: its exit code, in red
+PROMPT='%(?..%F{196}[%?]%f )%F{207}%n% %F{75}@%F{207}%m% %F{75}[%F{214}%~% %F{75}]%F{75}$%f '
 RPROMPT='${vcs_info_msg_0_}'
 
 # Plugins from the official repos (pkglists/base.txt), skipped when not installed
