@@ -1,6 +1,6 @@
 # X11 + awesome + rice. Display manager: LightDM (see TREE.md).
 xorg-server
-xorg-xset               # caffeine toggle (widgets/session.lua)
+xorg-xset               # caffeine toggle (widgets/session.lua), key repeat rate (rc.lua)
 xorg-xrdb               # loads ~/.Xresources (Xft.dpi: 120) at login: GDM and LightDM run xrdb, only lightdm depends on it
 awesome
 picom                   # compositor (alacritty opacity/blur)
@@ -19,10 +19,13 @@ xdg-utils
 thunar
 gvfs                    # trash and USB automount in Thunar
 feh
-scrot
-xclip
+scrot                   # Print / Shift+Print (rc.lua)
+xclip                   # copies those screenshots to the clipboard
 xdotool
 arandr
+autorandr               # screen profiles: F7 menu (widgets/screens.lua), reapplied on hotplug by its udev rule
+playerctl               # now playing + media keys (widgets/media.lua)
+gammastep               # night light (widgets/nightlight.lua, ~/.config/gammastep/config.ini)
 xtrlock                 # redundant with i3lock? (xtrlock leaves the screen visible)
 zathura
 zathura-pdf-poppler     # PDF backend (none installed today). poppler-glib is already there; mupdf would pull tesseract
@@ -35,7 +38,7 @@ noto-fonts-emoji
 
 # Dropped: pasystray (replaced by the wibar volume widget with a slider),
 #          brightnessctl (widgets/brightness.lua goes through logind with busctl, part of systemd),
-#          playerctl, rofi (optional: nothing binds media keys; Mod4+p keeps the built-in menubar),
+#          rofi (optional: Mod4+p keeps the built-in menubar),
 #          awesome-terminal-fonts (replaced by ttf-nerd-fonts-symbols),
 #          lua-lgi (Lua 5.5 build; awesome 4.3 depends on lua53-lgi),
 #          gdm (only if GNOME goes, see gnome.txt)

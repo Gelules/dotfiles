@@ -41,7 +41,6 @@ glow
 tmux
 screen
 bc
-ncdu
 # Containers and VMs
 docker
 libvirt

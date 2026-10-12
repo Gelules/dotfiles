@@ -26,6 +26,7 @@ fprintd                 # fingerprint reader
 reflector
 pacman-contrib          # paccache.timer (replaces 'pacman -Scc' in up()), checkupdates
 git
+git-delta               # git pager in home/.config/git/config: git log/diff fail without it
 stow
 zsh
 vim
@@ -33,7 +34,8 @@ openssh
 man-db
 man-pages
 most                    # MANPAGER in ~/.profile
-htop
+htop                    # also opened by the anomalies widget (widgets/health.lua)
+ncdu                    # also opened by the disk widget (widgets/disk.lua)
 tree
 rsync
 wget
