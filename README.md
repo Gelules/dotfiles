@@ -37,6 +37,19 @@ Files already in the way are moved to `~/.dotfiles-backup/<date>/`, never overwr
 - Firefox Sync, and the logins (NordVPN, Discord...).
 - Once the SSH keys are back: `git -C ~/.dotfiles remote set-url origin git@github.com:Gelules/dotfiles.git`.
 
+## Desktop keys
+
+| Key | Does |
+|---|---|
+| Mod4+s | every shortcut |
+| F7 | screen layouts: autorandr profiles ("save as..." in the same menu), `~/.screenlayout/*.sh`, arandr |
+| Mod4+² | drop-down terminal |
+| Print / Shift+Print | screenshot of everything / of a region or window, to `~/Pictures/Screenshots` and the clipboard |
+| Play, Pause, Next, Previous | the last media player used (`playerctl`) |
+
+Wibar icons that only show up when something needs a look: updates, failed systemd units, CPU / RAM / temperature,
+`/` over 90 %. Click any of them.
+
 ## Keeping the package lists honest
 
 Packages installed explicitly but in no list:
