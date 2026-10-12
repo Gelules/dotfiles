@@ -90,6 +90,23 @@ set updatetime=500
 " sets this, but it is not loaded when a ~/.vimrc exists)
 set ttimeout ttimeoutlen=50
 
+" System clipboard: every yank (y, not d or x) also goes to it, through the
+" terminal (OSC 52), as this Vim is built without X (-clipboard). Copy only:
+" Alacritty refuses OSC 52 reads, so p keeps pasting Vim's own registers and
+" text copied elsewhere is pasted with Ctrl+Shift+V. Alacritty doesn't
+" announce OSC 52 when Vim asks for it, hence the force. Not
+" clipboard=unnamedplus: p would then read "+, which a copy-only clipboard
+" can't fill (E353 in a new Vim instead of the yank kept in viminfo).
+let g:osc52_force_avail = $TERM ==# 'alacritty'
+let g:osc52_disable_paste = 1
+packadd osc52
+set clipmethod+=osc52
+augroup osc52_yank
+    autocmd!
+    autocmd TextYankPost * if v:event.operator ==# 'y' && v:event.regname ==# '' && v:clipmethod !=# 'none'
+                \ | call setreg('+', v:event.regcontents, v:event.regtype) | endif
+augroup END
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " User interface
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -155,6 +172,24 @@ set completeopt=longest,menuone
 
 " Highlight current line
 set cursorline
+
+" True colours (24 bits) instead of the nearest of 256. Not on the Linux
+" console: it keeps one bit per channel, and the Visual selection would vanish.
+" :terminal and :Termdebug then take these ANSI colours: Alacritty's palette
+" (alacritty.toml) instead of Vim's own, whose blue is unreadable on black.
+if $TERM !=# 'linux'
+    set termguicolors
+    let g:terminal_ansi_colors = ['#1a1a1a', '#ea3a3f', '#8fb573', '#d9b26f', '#7fa1c3', '#b88fc1', '#7fb8b0', '#cfcfcf',
+                \ '#6e6e6e', '#ff5a5f', '#a9cf8e', '#ebc98d', '#9fbde0', '#d0a9d8', '#9dd4cc', '#ffffff']
+endif
+
+" Cursor shape by mode: bar in Insert, underline in Replace, block elsewhere.
+" Block from the start, and the terminal's own cursor back on exit.
+let &t_SI = "\e[6 q"
+let &t_SR = "\e[4 q"
+let &t_EI = "\e[2 q"
+let &t_ti ..= "\e[2 q"
+let &t_te ..= "\e[0 q"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Search options
@@ -266,8 +301,10 @@ augroup END
 " Plugin mappings and options
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Use a slightly darker background color to differentiate with the status line
+" Keep the terminal's own background (and its opacity): _256 is read with 256
+" colours, the other one with termguicolors
 let g:jellybeans_background_color_256='NONE'
+let g:jellybeans_background_color='NONE'
 
 " Feel free to switch to another colorscheme
 silent! colorscheme jellybeans   " silent!: not installed yet on a fresh machine
