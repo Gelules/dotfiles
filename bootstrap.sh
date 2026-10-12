@@ -31,7 +31,8 @@ done < <(find home \( -type f -o -type l \) -print0)
 stow --restow --no-folding --target="$HOME" home
 
 # 2. Official packages: one transaction, full upgrade first (never a partial -Sy).
-sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
+#    pacman.conf: colours, and a table of old -> new versions before each transaction.
+sudo sed -i -e 's/^#Color$/Color/' -e 's/^#VerbosePkgLists$/VerbosePkgLists/' /etc/pacman.conf
 if (( ${#repo_files[@]} )); then
     mapfile -t repo_pkgs < <(pkgs "${repo_files[@]}")
     sudo pacman -Syu --needed "${repo_pkgs[@]}"
@@ -57,6 +58,8 @@ if (( aur )); then
 fi
 
 # 5. Services (enabled only, they start at next boot) and groups. Skips what is not installed.
+#    Not autorandr.service: enabled, it runs at every suspend and would bring the saved profile back over a
+#    layout picked with F7. Its udev rule starts it without that on hotplug, rc.lua at login.
 for unit in NetworkManager.service bluetooth.service systemd-timesyncd.service \
             power-profiles-daemon.service fstrim.timer paccache.timer reflector.timer \
             libvirtd.socket; do
@@ -71,6 +74,14 @@ for g in libvirt wireshark nordvpn; do
     if getent group "$g" >/dev/null; then sudo usermod -aG "$g" "$(id -un)"; fi
 done
 if [[ -x /usr/bin/zsh && $(getent passwd "$(id -un)" | cut -d: -f7) != */zsh ]]; then chsh -s /usr/bin/zsh; fi
+# Caps Lock = Escape in X (written to /etc/X11/xorg.conf.d/00-keyboard.conf, the console keeps its keymap)
+sudo localectl --no-convert set-x11-keymap fr pc105 "" caps:escape
+# Battery: stop charging at 80 %, start again under 75 %. UPower remembers it, polkit lets the
+# active session ask without sudo.
+bat=(org.freedesktop.UPower /org/freedesktop/UPower/devices/battery_BAT0 org.freedesktop.UPower.Device)
+if [[ $(busctl get-property "${bat[@]}" ChargeThresholdSupported 2>/dev/null) == "b true" ]]; then
+    busctl call "${bat[@]}" EnableChargeThreshold b true
+fi
 
 cat <<'EOF'
 

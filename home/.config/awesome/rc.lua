@@ -63,6 +63,14 @@ local battery    = require("widgets.battery")
 local brightness = require("widgets.brightness")
 local session    = require("widgets.session")
 local updates    = require("widgets.updates")
+local media      = require("widgets.media")
+local powerprofile = require("widgets.powerprofile")
+local nightlight = require("widgets.nightlight")
+local failed     = require("widgets.failed")
+local health     = require("widgets.health")
+local disk       = require("widgets.disk")
+local screens    = require("widgets.screens") -- F7 menu, no wibar icon
+local quake      = require("widgets.quake")   -- Mod4+² drop-down terminal, no wibar icon
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -171,6 +179,14 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+-- 4.3's fixed layout adds its spacing even around an empty widget, so every hidden icon
+-- would leave a gap: space them with margins that vanish with their widget (draw_empty = false).
+local function spaced(...)
+    local row, gap = wibox.layout.fixed.horizontal(), beautiful.xresources.apply_dpi(4)
+    for _, w in ipairs({ ... }) do row:add(wibox.container.margin(w, gap, gap, 0, 0, nil, false)) end
+    return row
+end
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -216,21 +232,24 @@ awful.screen.connect_for_each_screen(function(s)
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
-        { -- Right widgets: tray (wifi, bluetooth), then icons that can vanish, then fixed ones
-            layout = wibox.layout.fixed.horizontal,
-            spacing = beautiful.xresources.apply_dpi(8),
+        spaced( -- Right widgets: tray (wifi, bluetooth), then icons hidden when there is nothing to say, then the others
             -- 4.3 sizes tray icons to the full bar height: pad them
             wibox.container.margin(wibox.widget.systray(), 0, 0,
                 beautiful.xresources.apply_dpi(5), beautiful.xresources.apply_dpi(5)),
-            updates,          -- pending updates / reboot needed (hidden when nothing)
+            media.widget,     -- now playing. Click: play/pause; middle: previous; right: next
+            updates,          -- pending updates / reboot needed
+            failed,           -- failed systemd units. Click: list
+            health,           -- CPU / RAM / temperature over their limit. Click: readings, htop
+            disk,             -- / over 90 %. Click: ncdu
             session.dnd,      -- do not disturb
             session.caffeine, -- no screen blanking
+            nightlight,       -- gammastep on/off
             volume.widget,    -- click: output + mic sliders; wheel: +/-5 %; middle: mute
             brightness.widget,
+            powerprofile,     -- click: power-saver -> balanced -> performance
             battery,
             mytextclock,
-            session.power,    -- lock / suspend / hibernate / log out / reboot / power off
-        },
+            session.power),   -- lock / suspend / hibernate / log out / reboot / power off
     }
 end)
 -- }}}
@@ -453,7 +472,27 @@ clientbuttons = gears.table.join(
     end)
 )
 
+-- Screenshot to ~/Pictures/Screenshots, also copied to the clipboard by scrot's -e command
+-- ($f = the file). xclip stays in the background to serve the clipboard: its output must
+-- not keep the pipe open, or the notification would wait until something else is copied.
+local function screenshot(opts)
+    awful.spawn.easy_async_with_shell("mkdir -p ~/Pictures/Screenshots && scrot -z " .. opts
+        .. " -e 'xclip -selection clipboard -t image/png -i $f >/dev/null 2>&1; echo $f'"
+        .. " ~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png", function(out)
+        if out ~= "" then naughty.notify { title = "Screenshot copied", text = out:gsub("\n$", "") } end
+    end)
+end
+-- The mode is picked when Print is pressed, the shot taken when it is released: scrot -s grabs the
+-- keyboard and pointer, which awesome holds while the key is down. Releasing Shift first is fine: the
+-- first press wins over the auto-repeated ones, which come without Shift once it is up.
+local shot_opts
+local function shoot() if shot_opts then screenshot(shot_opts); shot_opts = nil end end
+
 globalkeys = gears.table.join(globalkeys,
+    awful.key({ }, "Print", function () shot_opts = shot_opts or "" end, shoot,
+              {description = "screenshot", group = "screen"}),
+    awful.key({ "Shift" }, "Print", function () shot_opts = shot_opts or "-s" end, shoot,
+              {description = "screenshot of a region (drag) or a window (click)", group = "screen"}),
     awful.key({ }, "XF86AudioRaiseVolume", function () volume.change( 5) end,
               {description = "raise volume", group = "audio"}),
     awful.key({ }, "XF86AudioLowerVolume", function () volume.change(-5) end,
@@ -463,6 +502,9 @@ globalkeys = gears.table.join(globalkeys,
     awful.key({ }, "XF86AudioMicMute", volume.toggle_mic_mute,
               {description = "toggle microphone mute", group = "audio"}),
     brightness.keys, -- XF86MonBrightnessUp/Down
+    media.keys,      -- XF86AudioPlay/Pause/Stop/Next/Prev
+    screens.keys,    -- F7 (XF86Display): screen layouts
+    quake.keys,      -- Mod4+²: drop-down terminal
     session.keys)    -- Mod4+Shift+Escape: lock
 
 -- Set keys
@@ -520,6 +562,8 @@ awful.rules.rules = {
     { rule_any = {type = { "dialog" }
       }, properties = { titlebars_enabled = true }
     },
+
+    quake.rule, -- the drop-down terminal: floating on top, every tag, no tasklist entry
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
@@ -604,5 +648,17 @@ for _, cmd in ipairs {
 } do
     awful.spawn.with_shell(("pgrep -u \"$USER\" -x %s >/dev/null || exec %s")
         :format(cmd:match("[^/]+$"):sub(1, 15), cmd))
+end
+
+-- Key repeat: 250 ms before a held key repeats, then 40 per second (X default: 660 ms, 25/s)
+awful.spawn("xset r rate 250 40", false)
+
+-- Once per X session, not again on Mod4+Ctrl+r (root window properties survive a restart):
+-- the autorandr profile of the screens plugged at login (none matches: nothing changes).
+-- Later hotplugs: autorandr's udev rule.
+awesome.register_xproperty("session_started", "boolean")
+if not awesome.get_xproperty("session_started") then
+    awesome.set_xproperty("session_started", true)
+    awful.spawn({ "autorandr", "--change" }, false)
 end
 -- }}}
