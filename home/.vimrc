@@ -90,8 +90,9 @@ set updatetime=500
 " sets this, but it is not loaded when a ~/.vimrc exists)
 set ttimeout ttimeoutlen=50
 
-" System clipboard: every yank (y, not d or x) also goes to it, through the
-" terminal (OSC 52), as this Vim is built without X (-clipboard). Copy only:
+" System clipboard: every yank and delete (y, d, x, c...) also goes to it,
+" like the unnamed register, through the terminal (OSC 52), as this Vim is
+" built without X (-clipboard). Not "_ (black hole) or "a-"z. Copy only:
 " Alacritty refuses OSC 52 reads, so p keeps pasting Vim's own registers and
 " text copied elsewhere is pasted with Ctrl+Shift+V. Alacritty doesn't
 " announce OSC 52 when Vim asks for it, hence the force. Not
@@ -103,7 +104,7 @@ packadd osc52
 set clipmethod+=osc52
 augroup osc52_yank
     autocmd!
-    autocmd TextYankPost * if v:event.operator ==# 'y' && v:event.regname ==# '' && v:clipmethod !=# 'none'
+    autocmd TextYankPost * if v:event.regname ==# '' && v:clipmethod !=# 'none'
                 \ | call setreg('+', v:event.regcontents, v:event.regtype) | endif
 augroup END
 
