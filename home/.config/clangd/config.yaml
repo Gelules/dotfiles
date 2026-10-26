@@ -1,0 +1,7 @@
+# Kernel modules: compile_commands.json from `bear -- make` holds the kernel's GCC-only
+# flags. clangd drops most of them with a warning, but reports -mrecord-mcount as an
+# error on line 1. Harmless elsewhere: these flags only appear in kernel builds.
+CompileFlags:
+  Remove: [-mrecord-mcount, -mpreferred-stack-boundary=*, -mindirect-branch=*, -mindirect-branch-register,
+           -fno-allow-store-data-races, -fzero-init-padding-bits=*, -fdiagnostics-show-context=*,
+           -fmin-function-alignment=*, -fconserve-stack]
