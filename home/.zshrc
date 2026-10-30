@@ -16,6 +16,9 @@ setopt inc_append_history extended_history hist_ignore_space
 setopt histignorealldups
 # If only a directory path is entered, cd there
 setopt autocd
+# Redirections behave as in sh and bash: no implicit tee or cat when a
+# descriptor is redirected twice (cmd 2>&1 > /dev/null | grep ...)
+setopt no_multios
 
 setopt prompt_subst
 setopt glob_dots
